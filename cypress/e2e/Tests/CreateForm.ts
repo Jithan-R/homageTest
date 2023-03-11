@@ -13,8 +13,6 @@ describe ("Verify the user can successfully create the form", () => {
     let Declaration;
 
     beforeEach(function () {
-        cy.visit(Cypress.env('HomageURL'));
-        commons.formVisitVerify();
         cy.fixture("CreateFormData.json").then(function (data) {
             LocationName = data.LocationName;
             FirstName = data.BasicDetails.FirstName;
@@ -31,11 +29,17 @@ describe ("Verify the user can successfully create the form", () => {
             role1 = data.RoleSelector.Role_1;
             role2= data.RoleSelector.Role_2;
             Declaration = data.Declaration;
-
         });
+
+        cy.visit(Cypress.env('HomageURL'));
     });
 
-    it ("Create a form with all valid credentials", () => {
+    it("TC 01: Verify URL laeading the user to the correc form creation form", () => {
+        cy.url().should("include", Cypress.env('HomageURL'))
+        commons.formVisitVerify();
+    });
+
+    it("TC 02: Create a form with all valid credentials with filling all the mandattory fields", () => {
         registrationForm.selectLocation(LocationName);
         registrationForm.basicDetails(FirstName, LastName, 
             commons.emailCreation(5)+EmailAddress, Country, 
@@ -50,6 +54,9 @@ describe ("Verify the user can successfully create the form", () => {
         registrationForm.declarationName(Declaration);
         registrationForm.declarationCheckBox();
         registrationForm.submitButton();
-    })
+        registrationForm.formWait();
+        registrationForm.formSubmitVerification(); //Forme will be verified here once it is submitted
+        cy.url().should("include", Cypress.env('HomageURL'));
+    });
 
 });

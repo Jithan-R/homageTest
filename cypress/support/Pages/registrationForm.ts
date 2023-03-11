@@ -27,6 +27,7 @@ class HomageRegistration {
             .click();
     };
 
+    //Sunction to work with Yes & No options in Roles
     experianceSelectior (SelectionButton, selector) {
         cy.xpath("//div[contains(@class, 'yes-no-sg')]//button[contains(text(), '"+SelectionButton+"')]")
             .click()
@@ -94,8 +95,24 @@ class HomageRegistration {
         cy.xpath("//button[contains(text(), 'Submit Application')]")
             .should("be.exist")
             .should("contain.text", "Submit Application")
-            // .click();
+            .click();
     }
-}
+
+    formSubmitVerification () {
+        cy.get("div[class='cpf-content cpf-success v']")
+            .should("contain.text", "Your application has been submitted!")
+            .should("contain.text", "Thank you for your interest in joining Homage. We will get back to you with the results of your application ")
+            .should("contain.text", "within 3-5 working days.")
+            .should("contain.text", "Find out more about becoming a Homage Care Professional")
+    };
+
+    //Wait to verify form submission
+    formWait () {
+        cy.intercept ("POST", "/api/v3/carepro/apply").as("formWait")
+        cy.wait("@formWait").then((res) => {
+          expect(res.response.statusCode).to.eq(201);
+        });
+    };
+};
 
 export default HomageRegistration

@@ -18,7 +18,10 @@ class commons {
 
   static formVisitVerify () {
     cy.get("#root")
-      .should("contain.text", "Care where you are");
+      .should("contain.text", "Care where you are")
+      .should("contain.text", "Build a meaningful")
+      .should("contain.text", "career and touch")
+      .should("contain.text", "the lives of others");
   }
 };
 
