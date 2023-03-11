@@ -13,7 +13,7 @@ class HomageRegistration {
         cy.get("#email").type(EmailAddress);
         cy.get('.MuiButtonBase-root')
             .click();
-        cy.xpath("//span[contains(text(), '"+Country+"')]", {timeout:2000}).click()
+        cy.xpath("//span[contains(text(), '"+Country+"')]", {timeout:2*1000}).click()
         cy.get("#phone").type(PhoneNumber)
     };
 
@@ -113,6 +113,33 @@ class HomageRegistration {
           expect(res.response.statusCode).to.eq(201);
         });
     };
+
+    FailSenario () {
+        cy.xpath("//button[contains(text(), 'Submit Application')]")
+            .click()
+            .then((subBtn) => {
+                cy.get("div[class='cpf-content cpf-success v']")
+                    .then((confirmApply) => {
+                    if(subBtn != confirmApply) {
+                        cy.xpath("//span[@id='countryResidency']/span[@has-error]")
+                            .should("be.exist")
+                            .click();
+                        cy.xpath("//span[@id='legalAge']/span[@has-error]")
+                            .should("be.exist")
+                            .click();
+                        cy.xpath("//span[@id='roles'][@has-error]")
+                            .should("be.exist")
+                            .click();
+                        cy.xpath("//span[@id='jobTypes']/span[@has-error]")
+                            .should("be.exist")
+                            .click();
+                        cy.xpath("//span[@id='jobTypes']/span[@has-error]")
+                            .should("be.exist")
+                            .click();
+                    }
+                });
+            });
+    }
 };
 
 export default HomageRegistration
