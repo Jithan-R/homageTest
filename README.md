@@ -25,6 +25,11 @@ Pre-requisite softwares and setup
 
 * It will generate the report automatically, if not it will create html file under folder report after the test execution. Open that html folder in any of the browser.
 
-### Who do I talk to? ###
+### Steps tp set-up the test ###
+* git clone https://github.com/Jithan-R/homageTest
+* npm install
+* To open - npx cypress open
+* To get HTML teport : npx cypress run --spec "cypress/e2e/Tests" (Run using this commant)
 
+### Who do I talk to? ###
 * Inthirajithan R
