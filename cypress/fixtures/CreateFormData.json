@@ -1,0 +1,29 @@
+{
+    "LocationName" : "Singapore - Singapore",
+
+    "BasicDetails":{
+        "FirstName" : "Inthirajithan",
+        "LastName"  : "Ratnasingam",
+        "EmailAddress" : "@gmail.com",
+        "Country" : "Sri Lanka"
+    },
+
+    "OptionSelector" : {
+        "SelectionAswer1" : "Yes",
+        "SelectionAswer2" : "No"
+    },
+
+    "YearSelector" : {
+        "Experience_1" : "Less than 1",
+        "Experience_2" : "1 to 3",
+        "Experience_3" : "4 to 6",
+        "Experience_4" : "7 to 10",
+        "Experience_5" : "More than 10"
+    },
+    "RoleSelector" : {
+        "Role_1" : "Caregiver",
+        "Role_2" : "Admin"
+    },
+    
+    "Declaration" : "Inthirajithan R"
+}
