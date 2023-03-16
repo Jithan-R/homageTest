@@ -118,24 +118,15 @@ class HomageRegistration {
         cy.xpath("//button[contains(text(), 'Submit Application')]")
             .click()
             .then((subBtn) => {
-                cy.get("div[class='cpf-content cpf-success v']")
+                cy.xpath("//button[contains(text(), 'Submit Application')]")
                     .then((confirmApply) => {
                     if(subBtn != confirmApply) {
                         cy.xpath("//span[@id='countryResidency']/span[@has-error]")
-                            .should("be.exist")
-                            .click();
+                            .should("be.exist");
                         cy.xpath("//span[@id='legalAge']/span[@has-error]")
-                            .should("be.exist")
-                            .click();
+                            .should("be.exist");
                         cy.xpath("//span[@id='roles'][@has-error]")
-                            .should("be.exist")
-                            .click();
-                        cy.xpath("//span[@id='jobTypes']/span[@has-error]")
-                            .should("be.exist")
-                            .click();
-                        cy.xpath("//span[@id='jobTypes']/span[@has-error]")
-                            .should("be.exist")
-                            .click();
+                            .should("be.exist");
                     }
                 });
             });

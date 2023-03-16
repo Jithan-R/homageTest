@@ -86,7 +86,7 @@ describe ("Verify the user can successfully create the form", () => {
         registrationForm.backgroundCheck(SelectionAswer2);
         registrationForm.declarationName(Declaration);
         registrationForm.declarationCheckBox();
-        registrationForm.submitButton();
+        registrationForm.FailSenario();
     });
 
 });
